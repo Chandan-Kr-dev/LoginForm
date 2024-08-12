@@ -6,6 +6,7 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [status, setStatus] = useState("")
   const navigate = useNavigate();
 
 
@@ -15,8 +16,8 @@ const Signup = () => {
       .post("http://127.0.0.1:3002/Signup", { name, email, password })
       .then((res) => {
         if (res.data === "Exists") {
-
-          alert("User already exists");
+          setStatus("User already exists! Please login ")
+          // alert("User already exists");
         } else {
           alert("User Registerd Successfully")
           // console.log(res);
@@ -74,6 +75,7 @@ const Signup = () => {
             Submit
           </button>
         </form>
+        <p className="text-red-400 font-semibold">{status}</p>
         <div className="h-px w-full bg-black "></div>
         <p className="text-yellow-600 text-xl font-bold">Already have an id</p>
         <Link to={"/login"} className="my-2 bg-blue-400 px-2 rounded-lg w-full">

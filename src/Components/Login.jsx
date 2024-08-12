@@ -7,6 +7,7 @@ const Login = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [status, setStatus] = useState("")
     const navigate=useNavigate()
 
     const handleonSubmit=(e)=>{
@@ -17,7 +18,8 @@ const Login = () => {
             alert("Loggedin Successfully")
             navigate('/Home')
           }else{
-            alert("Incorrect password")
+            setStatus("Incorrect Password")
+            // alert("Incorrect password")
           }
         })
         .catch(err=>console.log(err))
@@ -38,6 +40,7 @@ const Login = () => {
           </div>
           <button type="submit" className="my-2 bg-blue-400 px-2 rounded-lg w-full">Submit</button>
         </form>
+        <p className="text-red-500 font-semibold">{status}</p>
         <div className="h-px w-full bg-black "></div>
         <p className="text-yellow-600 text-xl font-bold">Register Now</p>
         <Link to={'/Signup'} className="my-2 bg-blue-400 px-2 rounded-lg w-full">Register</Link>
